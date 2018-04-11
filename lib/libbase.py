@@ -24,7 +24,7 @@ class baseManager():
         details = platform.uname()
 
         if sys.platform == 'linux' or sys.platform == 'linux2':
-            sysInfo =dict(base=details.system, os=platform.dist()[0].capitalize(), kernel=details.release,
+            sysInfo = dict(base=details.system, os=platform.dist()[0].capitalize(), kernel=details.release,
                            architecture=details.machine, processor=details.processor)
         elif sys.platform == 'darwin':
             # Find a Darwin system to perform unit-testing
@@ -43,8 +43,8 @@ class baseManager():
     def avatarSrc(self):
         path = ""
         if self.sysInfo['base'] == 'Linux' or self.sysInfo['base'] == 'Linux2':
-            gnome2Base = '/home/'+self.user+'/.face'
-            gnome3Base = open('/var/lib/AccountsService/users/' + self.user, 'r')
+            gnome2Base = os.path.join('/home', self.user, '.face')
+            gnome3Base = open(os.path.join('/var', 'lib', 'AccountsService', 'users', self.user), 'r')
 
             # Gnome 2 check
             if os.path.exists(gnome2Base):
@@ -55,13 +55,14 @@ class baseManager():
                     if line.startswith('Icon='):
                         path = str(line[5:])
                         path = path.strip('\n')
+            gnome3Base.close()
 
         return path
 
     def getRoot(self):
         path = ''
         if self.sysInfo['base'] == 'Linux' or self.sysInfo['base'] == 'Linux2':
-            path = '/home/'+self.user+'/.RootNET/'
+            path = os.path.join('/home', self.user, '.RootNET')
 
             if not os.path.exists(path):
                 os.mkdir(path)

@@ -13,7 +13,7 @@ Window {
     id: system
 
     // Window Properties
-    width: 1020
+    width: 820
     height: 640
     color: 'transparent'
     title: qsTr('RootNET')
@@ -52,14 +52,14 @@ Window {
             addImportPath(Qt.resolvedUrl('.'))
 
             // System Base Module
-            importModule('services.base', function(){
-                call('services.base.baseManager', [], function(baseManager){
+            importModule('lib.libbase', function(){
+                call('lib.libbase.baseManager', [], function(baseManager){
                     system.baseManager = baseManager
                 })
             })
             // IPFS Daemon Module
-            importModule('services.daemon', function(){
-                call('services.daemon.ipfsManager', [], function(ipfsManager){
+            importModule('lib.libipfs', function(){
+                call('lib.libipfs.nodeManager', [], function(ipfsManager){
                     system.daemon = ipfsManager
                 })
             })
@@ -91,6 +91,7 @@ Window {
 
         if (system.ipfsInstall !== '!!Missing'){
             system.nodeInitialized = python.getattr(daemon, 'initialized')
+            console.log(system.nodeInitialized)
         }
     }
 
@@ -273,10 +274,10 @@ Window {
         Rectangle {
             id: rightPanel
             color: 'Transparent'
-            width: parent.width
             opacity: 1.0
             anchors {
                 left: leftPanel.right
+                right: parent.right
                 top: parent.top
                 bottom: parent.bottom
             }

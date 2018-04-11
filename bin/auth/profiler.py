@@ -2,17 +2,13 @@
 
 '''
 import sys, os
-from bin.tools.encryption import pHashing
-import bcrypt
+from lib.libcrypt import hashCipher
+from lib.libbase import baseManager
 
 # Exceptions
 class registered(Exception):
     def __init__(self):
         self.status = '<!registered>'
-
-import os, json
-from services.base import baseManager
-
 
 class profiler():
     __base = baseManager()
@@ -65,7 +61,7 @@ class profiler():
                 raise registered()
             else:
                 # Encrypting Secret Key
-                __cipher = pHashing(secretKey)
+                __cipher = hashCipher(secretKey)
                 hash = __cipher.hash()
 
 
@@ -94,10 +90,10 @@ class profiler():
             return status
 
     def authorization(self, loginKey):
-        __loginKey = loginKey # Write function to hash key *** depends on encryption tools
-        __cipher = pHashing(loginKey)
-        __hash = __cipher.hash()
-        result = '<-false>'
+        __loginKey = loginKey # Write function to hash key *** depends on libcrypt
+        __cipher = hashCipher(loginKey)
+        result = False
+        __key = ''
 
         profile = (self.root + self.user).strip()
         root = open(profile, 'r')
@@ -108,12 +104,7 @@ class profiler():
                 __key = __key.strip()
                 __key = __key.encode('utf-8')
 
-        xresult = __cipher.compare(__key)
-
-        if xresult == True:
-            result = '<+true>'
-        else:
-            result = '<-false>'
+        result = __cipher.compare(__key)
 
         return result
 

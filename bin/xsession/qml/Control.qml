@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.2
 
 Rectangle {
 //////////////////////////////////////////// +++Properties+++ //////////////////////////////////////////////////
@@ -16,6 +17,7 @@ Rectangle {
     property string thumbSource: ""
     property variant subControls: []
     property string activeX: ""
+    property bool active: false
 //////////////////////////////////////////// +++Functions+++ //////////////////////////////////////////////////
 
 
@@ -114,17 +116,17 @@ Rectangle {
             Column {
                 id: subCModels
                 spacing: 2
+                anchors.fill: parent
 
                 Repeater {
                     model: root.subControls
                     delegate:
+
                         Item {
+                           id: subControl
                            height: 30
                            width: 50
-                           anchors {
-                               left: parent.left
-                               leftMargin: 90
-                           }
+                           anchors {left: parent.left; leftMargin: 90; right: parent.right}
 
                            MouseArea {
                                anchors.fill: parent
@@ -132,8 +134,10 @@ Rectangle {
                                cursorShape: Qt.PointingHandCursor
 
                                onClicked: {
+                                   root.activeX = ''
                                    root.activeX = root.label+'.'+modelData
-                               }                           }
+                               }
+                           }
 
                            Text {
                                text: modelData

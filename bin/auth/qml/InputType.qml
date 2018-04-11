@@ -114,10 +114,10 @@ Item {
                     var authEngine = profiler_py.getattr(root.profiler, 'authorization')
                     profiler_py.call(authEngine, [loginKey], function(result){
 
-                        if(result === '<-false>'){
+                        if(result === false){
                             root.newState = 'Offline'
                         }
-                        else if(result === '<+true>'){
+                        else if(result === true){
                             root.newState = 'Online'
                             var update = profiler_py.getattr(root.profiler, 'setState')
                             profiler_py.call(update, [root.newState], function(){})

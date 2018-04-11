@@ -43,7 +43,6 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         fileHUB.state = fileHUB.state==="Expanded"?"":"Expanded"
                         connections.state = ""
@@ -72,7 +71,6 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         connections.state = connections.state==="Expanded"?"":"Expanded"
                         fileHUB.state = ""
@@ -101,7 +99,6 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         pages.state = pages.state==="Expanded"?"":"Expanded"
                         fileHUB.state = ""
@@ -130,7 +127,6 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         jobs.state = jobs.state==="Expanded"?"":"Expanded"
                         fileHUB.state = ""

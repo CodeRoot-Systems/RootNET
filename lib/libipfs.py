@@ -1,8 +1,8 @@
 import subprocess
-import ipfsapi
+import ipfsapi as node
 
 # ************* IPFS Manager *************
-class ipfsManager():
+class nodeManager():
     def __init__(self):
         self.version = self.versionChecker()
         self.initialized = self.checkInit()
@@ -40,16 +40,16 @@ class ipfsManager():
         # Arguments depend on baseManager.base
 
     def checkInit(self):
-        state = 'false'
+        state = False
 
         if self.version != '!!Missing':
             process = subprocess.run(['ipfs init'], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             execCode = str(process.returncode)
 
             if execCode is not 0:
-                state = 'true'
+                state = True
             else:
-                state = 'false'
+                state = False
         else:
             state = state
 
@@ -66,8 +66,9 @@ class ipfsManager():
 
     def getNodeID(self):
         # Depends on IPFS Daemon instance
+        identity = ''
         if self.initialized is not 'false':
-            client = ipfsapi.Client(host='localhost', port=5001, base='api/v0', chunk_size=4096)
+            client = node.Client(host='localhost', port=5001, base='api/v0', chunk_size=4096)
             identity = client.id()
 
         return identity
@@ -87,7 +88,13 @@ class ipfsManager():
         else:
             execCode = 1
 
-if __name__ == "__main__":
-    xd = ipfsManager()
-    print(xd.getNodeID())
-    #print(dir(xd.getNodeID()))
+class worker():
+    __daemon = node.Client(host='localhost', port=5001, base='api/v0', chunk_size=4096)
+
+    def __init__(self, path):
+        self.object = path
+
+    def addFiles(self):
+        pass
+
+
