@@ -18,11 +18,10 @@ class profiler():
         self.user = self.__base.user
         self.host = self.__base.host
         self.registered = self.validation()
-        self.tools = os.path.dirname(os.path.abspath(__file__)) + '/../tools/'
-        self.logDir = self.root + '/logs/' # frozen dated binary files
+        self.logDir = os.path.join(self.root, 'logs')
 
     def session(self):
-        profile = self.root + self.user
+        profile = os.path.join(self.root, self.user)
         mode = ''
 
         if os.path.exists(profile):
@@ -41,6 +40,20 @@ class profiler():
 
         return mode
 
+    def keyFetch(self):
+        __key = ''
+
+        profile = (os.path.join(self.root,self.user))
+        root = open(profile, 'r')
+
+        for line in root:
+            if line.startswith('secretKey:'):
+                __key = line[10:]
+                __key = __key.strip()
+                __key = __key.encode('utf-8')
+
+        return __key
+
     def validation(self):
         profile = self.root + self.user
 
@@ -53,7 +66,7 @@ class profiler():
 
     def activation(self, nodeId, publicKey, secretKey):
 
-        path = self.root + self.user
+        path = os.path.join(self.root, self.user)
         root = open(path, 'w')
 
         try:
@@ -93,23 +106,13 @@ class profiler():
         __loginKey = loginKey # Write function to hash key *** depends on libcrypt
         __cipher = hashCipher(loginKey)
         result = False
-        __key = ''
-
-        profile = (self.root + self.user).strip()
-        root = open(profile, 'r')
-
-        for line in root:
-            if line.startswith('secretKey:'):
-                __key = line[10:]
-                __key = __key.strip()
-                __key = __key.encode('utf-8')
-
-        result = __cipher.compare(__key)
+        secret = self.keyFetch()
+        result = __cipher.compare(secret)
 
         return result
 
     def setState(self, status):
-        profile = (self.root + self.user).strip()
+        profile = os.path.join(self.root,self.user)
         root = open(profile, 'r')
         details = []
 

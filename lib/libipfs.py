@@ -1,5 +1,8 @@
-import subprocess
+import subprocess, os
 import ipfsapi as node
+
+# Exceptions
+from lib.__exceptions import NullPath as _NULLPATH
 
 # ************* IPFS Manager *************
 class nodeManager():
@@ -94,7 +97,19 @@ class worker():
     def __init__(self, path):
         self.object = path
 
-    def addFiles(self):
-        pass
+    def addFile(self):
+        try:
+
+            if os.path.exists(self.object):
+                meta = self.__daemon.add(self.object, chunker='size-2048')
+
+                return meta
+            else:
+                raise _NULLPATH(self.object)
+
+        except _NULLPATH as exception:
+            print(exception.error)
+            exit(exception.code)
+
 
 

@@ -1,10 +1,7 @@
 import os, zipfile
 
 # Exceptions
-class NullPath(Exception):
-    def __init__(self, path):
-        self.error = '<--!PATH_MISSING: ' + path + ' !-->'
-        self.code = 2
+from lib.__exceptions import NullPath as _NULLPATH
 
 # Compression Algorithms
 class zipper():
@@ -40,9 +37,9 @@ class zipper():
 
             else:
 
-                raise NullPath(self.file)
+                raise _NULLPATH(self.file)
 
-        except NullPath as exception:
+        except _NULLPATH as exception:
             print(exception.error)
             exit(exception.code)
 
@@ -54,7 +51,7 @@ class zipper():
 
             return self.file[:-4]
 
-        except NullPath as exception:
+        except _NULLPATH as exception:
             print(exception.error)
             exit(exception.code)
 
