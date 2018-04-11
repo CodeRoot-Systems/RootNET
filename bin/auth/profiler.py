@@ -77,9 +77,6 @@ class profiler():
                 __cipher = hashCipher(secretKey)
                 hash = __cipher.hash()
 
-
-                #cipher = encryption.hash()
-
                 meta = [
                     'peer:'+ self.user+'\n',
                     'nodeId:'+ nodeId+'\n',
@@ -103,9 +100,7 @@ class profiler():
             return status
 
     def authorization(self, loginKey):
-        __loginKey = loginKey # Write function to hash key *** depends on libcrypt
         __cipher = hashCipher(loginKey)
-        result = False
         secret = self.keyFetch()
         result = __cipher.compare(secret)
 

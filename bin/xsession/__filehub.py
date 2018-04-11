@@ -43,6 +43,8 @@ class filehub():
                 # Comparison at this point
                 for file in self.files:
                     title = os.path.basename(os.path.abspath(file))
+                    archived = None
+
                     for item in archive:
                         iTitle = item['Name']
 

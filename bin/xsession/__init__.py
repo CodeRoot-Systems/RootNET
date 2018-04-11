@@ -91,7 +91,6 @@ class archiver():
             exit(exception.code)
 
     def wrt(self, content):
-        #archive = self.rdCurrent()
         root = open(self.root+'archive', mode='w')
         json.dump(dict(archive=content), fp=root)
 
