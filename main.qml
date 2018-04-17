@@ -91,7 +91,6 @@ Window {
 
         if (system.ipfsInstall !== '!!Missing'){
             system.nodeInitialized = python.getattr(daemon, 'initialized')
-            console.log(system.nodeInitialized)
         }
     }
 
@@ -273,7 +272,7 @@ Window {
         // Right Panel holding the Workspace
         Rectangle {
             id: rightPanel
-            color: 'Transparent'
+            color: "whitesmoke"
             opacity: 1.0
             anchors {
                 left: leftPanel.right
@@ -284,17 +283,9 @@ Window {
 
             /////////////////////////////////////+++++Pages+++++//////////////////////////////////////
             // PagePanel goes here.
-
-            /////////////////////////////////////+++++Tray+++++///////////////////////////////////////
-            // System Tray holding the System Tools
-            Tray {
-                id: tray
-                anchors {
-                    bottom: parent.bottom
-                    bottomMargin: 10
-                    right: parent.right
-                    rightMargin: 10
-                }
+            PagePanel {
+                id: workpanel
+                anchors.fill: parent
             }
         }
     }

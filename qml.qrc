@@ -3,8 +3,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>main.py</file>
-        <file>services/daemon.py</file>
-        <file>services/base.py</file>
         <file>bin/auth/profiler.py</file>
         <file>bin/xsession/pages/Archive.qml</file>
         <file>venv/include/python3.6m/abstract.h</file>
@@ -119,11 +117,9 @@
         <file>bin/qml/SidePane.qml</file>
         <file>bin/qml/Splash.qml</file>
         <file>bin/qml/Tray.qml</file>
-        <file>bin/qml/WorkPane.qml</file>
         <file>bin/qml/Xpane.qml</file>
         <file>bin/auth/qml/Auth.qml</file>
         <file>bin/auth/qml/Caption.qml</file>
-        <file>bin/auth/qml/Details.qml</file>
         <file>bin/auth/qml/InputType.qml</file>
         <file>bin/auth/qml/Separator.qml</file>
         <file>bin/auth/thumbs/toolTip.png</file>
@@ -139,5 +135,7 @@
         <file>bin/xsession/thumbs/appbar.globe.wire.png</file>
         <file>bin/xsession/thumbs/appbar.link.png</file>
         <file>bin/xsession/thumbs/appbar.progress.png</file>
+        <file>bin/qml/PagePanel.qml</file>
+        <file>bin/Tools/Details.qml</file>
     </qresource>
 </RCC>

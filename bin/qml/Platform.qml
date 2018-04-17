@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     id: root
-
+    clip: true
     // Platform name
     Text {
         id: platform

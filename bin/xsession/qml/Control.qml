@@ -17,29 +17,42 @@ Rectangle {
     property string thumbSource: ""
     property variant subControls: []
     property string activeX: ""
-    property bool active: false
 //////////////////////////////////////////// +++Functions+++ //////////////////////////////////////////////////
 
 
 //////////////////////////////////////////// +++States + Transitions+++ //////////////////////////////////////////////////
-    states: State {
-        name: "Expanded"
-        PropertyChanges {
-            target: ctrl
-            height: 45 + (30*subControls.length)
-            color : "#215D9C"
+    states: [
+        State {
+            name: "Hovered"
+            PropertyChanges {
+                target: ctrl
+                color: '#34393B'
+            }
+        },
+        State {
+            name: "Pressed"
+            PropertyChanges {
+                target: ctrl
+                height: 45 + (30*subControls.length)
+                color : "#215D9C"
+            }
         }
-    }
+    ]
 
-    transitions: Transition {
-
-        NumberAnimation {
-            target: ctrl
-            property: "height"
-            duration: 500
-            easing.type: Easing.InOutQuad
+    transitions: [
+        Transition {
+            from: "Hovered"; to: ""
+            ColorAnimation {duration: 350}
+        },
+        Transition {
+            NumberAnimation {
+                target: ctrl
+                property: "height"
+                duration: 500
+                easing.type: Easing.InOutQuad
+            }
         }
-    }
+    ]
 
 //////////////////////////////////////////// +++Components+++ //////////////////////////////////////////////////
     Rectangle {

@@ -8,18 +8,17 @@ from bin.auth.profiler import profiler
 # Exceptions
 from lib.__exceptions import NullPath as _NULLPATH
 
-class filehub():
+class archive():
     __base = Base()
     #__node = Node()
 
-    def __init__(self, files):
-        self.files = files
+    def __init__(self):
         self.root = os.path.join(self.__base.root, 'filehub')
 
         if not os.path.exists(self.root):
             os.mkdir(self.root, mode=0o755)
 
-    def archive(self):
+    def push(self, files):
         try:
 
             # META info from archive loaded and used to compare archived items
@@ -41,7 +40,7 @@ class filehub():
                 del (content)
 
                 # Comparison at this point
-                for file in self.files:
+                for file in files:
                     title = os.path.basename(os.path.abspath(file))
                     archived = None
 
@@ -57,7 +56,7 @@ class filehub():
                         zipList.append(file)
             else:
                 os.mknod(root, mode=0o755)
-                for file in self.files:
+                for file in files:
                     zipList.append(file)
 
             # Zipping at this point - Depends on libzip
@@ -79,13 +78,13 @@ class filehub():
 
             # Final Step - encrypt file and update uploadList
             for zip in cryptList:
-                if os.path.exists(item):
+                if os.path.exists(zip):
                     cipher = Crypto(__key, zip)
                     encrypted = cipher.encrypt()
                     uploadList.append(encrypted)
                     os.remove(zip)
                 else:
-                    raise _NULLPATH(item)
+                    raise _NULLPATH(zip)
             del(cryptList)
 
             # Upload at this point - Depends on libipfs
@@ -96,7 +95,7 @@ class filehub():
                     archive.append(meta)
                     os.remove(crypt)
                 else:
-                    raise _NULLPATH(item)
+                    raise _NULLPATH(crypt)
             del(uploadList)
 
 
@@ -114,13 +113,27 @@ class filehub():
             print(exception.error)
             exit(exception.code)
 
+    def pull(self, object):
+        pass
+
+
+class public():
+    def __init__(self):
+        pass
+
+    def push(self):
+        pass
+
+    def pull(self):
+        pass
+
 
 
 
 if __name__ == '__main__':
-    x = filehub(['/home/leamer/Documents/Third party files v2','/home/leamer/Documents/CoverPage (AttachmentReport).docx'])
-    for item in x.archive():
-        print(item)
+    x = archive()
+    for item in x.push(['/home/leamer/Documents/Thid party files v2','/home/leamer/Documents/CoverPage (AttachmentReport).docx']):
+         print(item)
 
 
 

@@ -2,12 +2,13 @@ import QtQuick 2.0
 
 Item {
     id: root
-    property var modelData: []
+    property var objData: []
+    property color vlColor: 'white'
 
     ListView {
         id: details
-        model: root.modelData
-        height: 15*modelData.length
+        model: root.objData
+        height: 15 * objData.length
         clip: true
         anchors {
             top: parent.top
@@ -46,7 +47,7 @@ Item {
                 id: dtTxt
                 text: qsTr(modelData.value)
                 elide: Text.ElideRight
-                color: 'White'
+                color: root.vlColor
                 anchors {
                     left: label.right
                     leftMargin: 3

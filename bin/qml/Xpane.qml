@@ -43,11 +43,29 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    onClicked: {
-                        fileHUB.state = fileHUB.state==="Expanded"?"":"Expanded"
-                        connections.state = ""
-                        pages.state = ""
-                        jobs.state = ""
+
+                    onPressed: {
+
+                        if(fileHUB.state === "Hovered"){
+                            fileHUB.state = fileHUB.states==="Pressed"?"":"Pressed"
+                            connections.state = ""
+                            pages.state = ""
+                            jobs.state = ""
+                        }
+                        else if(containsMouse){
+                            fileHUB.state = "Hovered"
+                        }
+                    }
+
+                    onEntered: {
+                        if(fileHUB.state !== "Pressed"){
+                            fileHUB.state = "Hovered"
+                        }
+                    }
+                    onExited: {
+                        if(fileHUB.state !== "Pressed"){
+                            fileHUB.state = ""
+                        }
                     }
                 }
 
@@ -71,11 +89,29 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    onClicked: {
-                        connections.state = connections.state==="Expanded"?"":"Expanded"
-                        fileHUB.state = ""
-                        pages.state = ""
-                        jobs.state = ""
+
+                    onPressed: {
+
+                        if(connections.state === "Hovered"){
+                            fileHUB.state = ""
+                            connections.state = connections.states==="Pressed"?"":"Pressed"
+                            pages.state = ""
+                            jobs.state = ""
+                        }
+                        else if(containsMouse){
+                            connections.state = "Hovered"
+                        }
+                    }
+
+                    onEntered: {
+                        if(connections.state !== "Pressed"){
+                            connections.state = "Hovered"
+                        }
+                    }
+                    onExited: {
+                        if(connections.state !== "Pressed"){
+                            connections.state = ""
+                        }
                     }
                 }
 
@@ -99,11 +135,29 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    onClicked: {
-                        pages.state = pages.state==="Expanded"?"":"Expanded"
-                        fileHUB.state = ""
-                        connections.state = ""
-                        jobs.state = ""
+
+                    onPressed: {
+
+                        if(pages.state === "Hovered"){
+                            fileHUB.state = ""
+                            connections.state = ""
+                            pages.state = pages.states==="Pressed"?"":"Pressed"
+                            jobs.state = ""
+                        }
+                        else if(containsMouse){
+                            pages.state = "Hovered"
+                        }
+                    }
+
+                    onEntered: {
+                        if(pages.state !== "Pressed"){
+                            pages.state = "Hovered"
+                        }
+                    }
+                    onExited: {
+                        if(pages.state !== "Pressed"){
+                            pages.state = ""
+                        }
                     }
                 }
 
@@ -127,11 +181,29 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
-                    onClicked: {
-                        jobs.state = jobs.state==="Expanded"?"":"Expanded"
-                        fileHUB.state = ""
-                        connections.state = ""
-                        pages.state = ""
+
+                    onPressed: {
+
+                        if(jobs.state === "Hovered"){
+                            fileHUB.state = ""
+                            connections.state = ""
+                            pages.state = ""
+                            jobs.state = jobs.states==="Pressed"?"":"Pressed"
+                        }
+                        else if(containsMouse){
+                            jobs.state = "Hovered"
+                        }
+                    }
+
+                    onEntered: {
+                        if(jobs.state !== "Pressed"){
+                            jobs.state = "Hovered"
+                        }
+                    }
+                    onExited: {
+                        if(jobs.state !== "Pressed"){
+                            jobs.state = ""
+                        }
                     }
                 }
 
@@ -139,8 +211,6 @@ Item {
                     root.activeX = jobs.activeX
                 }
             }
-
-
         }
 
         ///////////////////////////////////+++++Platform Panel+++++/////////////////////////////////
@@ -156,5 +226,4 @@ Item {
             }
         }
     }
-
 }

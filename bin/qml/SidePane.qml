@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import "../auth/qml/"
+import "../Tools/"
 // Module pyotherside to interface with Python3 Backend API.
 import io.thp.pyotherside 1.5
 
@@ -73,7 +74,7 @@ Item {
                 right: parent.right
             }
 
-            modelData: [
+            objData: [
                 {title: 'Node ID:', value: root.nodeID},
             ]
         }
@@ -160,7 +161,7 @@ Item {
                     left: parent.left
                     right: parent.right
                 }
-                modelData: [
+                objData: [
                     {title: 'Host:', value: root.host},
                     {title: 'OS:', value: root.os},
                     {title: 'Base:', value: root.base},
@@ -267,6 +268,22 @@ Item {
                 right: parent.right
             }
 
+            states: [
+                State {
+                    name: "Hovered"
+                    PropertyChanges {
+                        target: bars
+                        barColor: 'Gray'
+                    }
+                }]
+
+            transitions: [
+                Transition {
+                    from: "Hovered"; to: ""
+                    ColorAnimation {duration: 200}
+                }
+            ]
+
             Rectangle {
                 id: bars
                 width: 20
@@ -281,6 +298,8 @@ Item {
                     bottomMargin: 5
                 }
 
+                property color barColor: 'White'
+
                 MouseArea {
                     id: mouseArea
                     anchors.fill: parent
@@ -290,6 +309,14 @@ Item {
                         sessActivate.stop()
                         expand()
                     }
+
+                    onEntered: {
+                        tooltip.state = 'Hovered'
+                    }
+
+                    onExited: {
+                        tooltip.state = ''
+                    }
                 }
 
                 Column {
@@ -297,10 +324,11 @@ Item {
                     clip: true
                     anchors.fill: parent
 
+
                     Repeater {
                         model: 3
                         delegate: Rectangle  {
-                            color: 'White'
+                            color: bars.barColor
                             height: 2
                             anchors {
                                 left: parent.left
