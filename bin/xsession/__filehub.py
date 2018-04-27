@@ -7,7 +7,7 @@ from bin.auth.profiler import profiler
 
 # Exceptions
 from lib.__exceptions import NullPath as _NULLPATH
-
+ 
 class archive():
     __base = Base()
     #__node = Node()
@@ -68,7 +68,6 @@ class archive():
                 else:
                     raise _NULLPATH(item)
             del(zipList)
-
             
             # Encryption at this point - Depends on libcrypt
             # Initial Step - get key from profiler
@@ -126,15 +125,3 @@ class public():
 
     def pull(self):
         pass
-
-
-
-
-if __name__ == '__main__':
-    x = archive()
-    for item in x.push(['/home/leamer/Documents/Thid party files v2','/home/leamer/Documents/CoverPage (AttachmentReport).docx']):
-         print(item)
-
-
-
-

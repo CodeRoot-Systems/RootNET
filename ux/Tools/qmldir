@@ -1,0 +1,5 @@
+module bin.Tools
+Details 1.0 Details.qml
+ScrollBar 1.0 ScrollBar.qml
+MenuControl 1.0 MenuControl.qml
+

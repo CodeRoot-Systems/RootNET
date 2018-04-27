@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
-// Controls
-import "../xsession/qml/"
+// MenuConrols
+import "../Controls/"
 
 Item {
     id: root
@@ -15,8 +15,8 @@ Item {
         opacity: 1.0
         anchors.fill: parent
 
-        // creating Controls
-        // Control 1: File Hub
+        // creating MenuConrols
+        // MenuConrol 1: File Hub
 
         Rectangle {
             id: ctrlContainer
@@ -28,11 +28,11 @@ Item {
                 right: parent.right
             }
 
-            Control {
+            MenuControl {
                 id: fileHUB
                 label: "File Hub"
                 thumbSource: "../thumbs/appbar.cabinet.files.variant.png"
-                subControls: ["Archive","Public"]
+                subControls:  ["Archive","Public"]
 
                 anchors {
                     left: parent.left
@@ -74,11 +74,11 @@ Item {
                 }
             }
 
-            Control {
+            MenuControl {
                 id: connections
                 label: "Connections"
                 thumbSource: "../thumbs/appbar.globe.png"
-                subControls: ["Friends","Circles","Communities"]
+                subControls:  ["Friends","Circles","Communities"]
                 anchors {
                     top: fileHUB.bottom
                     topMargin: 5
@@ -120,7 +120,7 @@ Item {
                 }
             }
 
-            Control {
+            MenuControl {
                 id: pages
                 label: "Pages"
                 thumbSource: "../thumbs/appbar.pages.png"
@@ -166,11 +166,11 @@ Item {
                 }
             }
 
-            Control {
+            MenuControl {
                 id: jobs
                 label: "Jobs"
                 thumbSource: "../thumbs/appbar.suitcase.png"
-                subControls: ["Transporter"]
+                subControls:  ["Transporter"]
                 anchors {
                     top: pages.bottom
                     topMargin: 5

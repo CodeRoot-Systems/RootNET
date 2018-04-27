@@ -1,10 +1,11 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
-
 // Module pyotherside to interface with Python3 Backend API.
 import io.thp.pyotherside 1.5
 // RootNET Objects
-import "../RootNET/bin/qml/"
+//import "../RootNET/bin/qml/"
+import 'ux/TopLevel'
+
 //import "../js/ScreenFetch.js" as ScreenFetch
 
 /////////////////////////////////////////////+++++system+++++////////////////////////////////////////////////////

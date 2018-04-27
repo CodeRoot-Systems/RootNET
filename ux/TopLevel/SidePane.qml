@@ -1,8 +1,7 @@
 import QtQuick 2.0
-import "../auth/qml/"
+import "../Controls/"
 import "../Tools/"
 // Module pyotherside to interface with Python3 Backend API.
-import io.thp.pyotherside 1.5
 
 Item {
     id: root
@@ -260,7 +259,7 @@ Item {
             id: tooltip
             clip: true
             width: 0
-            source: '../auth/thumbs/toolTip.png'
+            source: '../thumbs/toolTip.png'
             height: 25
             anchors {
                 bottom: parent.bottom

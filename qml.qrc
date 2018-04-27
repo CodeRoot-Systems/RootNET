@@ -2,9 +2,6 @@
     <qresource lang="qml" prefix="/"/>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>main.py</file>
-        <file>bin/auth/profiler.py</file>
-        <file>bin/xsession/pages/Archive.qml</file>
         <file>venv/include/python3.6m/abstract.h</file>
         <file>venv/include/python3.6m/accu.h</file>
         <file>venv/include/python3.6m/asdl.h</file>
@@ -109,33 +106,36 @@
         <file>venv/lib/python3.6/config-3.6m-x86_64-linux-gnu/config.c</file>
         <file>venv/lib/python3.6/site-packages/wheel/test/headers.dist/header.h</file>
         <file>main.cpp</file>
-        <file>bin/xsession/qml/Control.qml</file>
-        <file>bin/xsession/qml/Page.qml</file>
-        <file>bin/qml/NotificationWindow.qml</file>
-        <file>bin/qml/Platform.qml</file>
-        <file>bin/qml/ProfileBar.qml</file>
-        <file>bin/qml/SidePane.qml</file>
-        <file>bin/qml/Splash.qml</file>
-        <file>bin/qml/Tray.qml</file>
-        <file>bin/qml/Xpane.qml</file>
-        <file>bin/auth/qml/Auth.qml</file>
-        <file>bin/auth/qml/Caption.qml</file>
-        <file>bin/auth/qml/InputType.qml</file>
-        <file>bin/auth/qml/Separator.qml</file>
-        <file>bin/auth/thumbs/toolTip.png</file>
-        <file>bin/auth/thumbs/toolTip.xcf</file>
-        <file>bin/xsession/thumbs/appbar.cabinet.files.variant.png</file>
-        <file>bin/xsession/thumbs/appbar.chat.png</file>
-        <file>bin/xsession/thumbs/appbar.cog.png</file>
-        <file>bin/xsession/thumbs/appbar.cogs.png</file>
-        <file>bin/xsession/thumbs/appbar.connect.png</file>
-        <file>bin/xsession/thumbs/appbar.connection.wifi.variant.png</file>
-        <file>bin/xsession/thumbs/appbar.database.png</file>
-        <file>bin/xsession/thumbs/appbar.globe.png</file>
-        <file>bin/xsession/thumbs/appbar.globe.wire.png</file>
-        <file>bin/xsession/thumbs/appbar.link.png</file>
-        <file>bin/xsession/thumbs/appbar.progress.png</file>
-        <file>bin/qml/PagePanel.qml</file>
-        <file>bin/Tools/Details.qml</file>
+        <file>ux/Pages/Archive.qml</file>
+        <file>ux/TopLevel/PagePanel.qml</file>
+        <file>ux/TopLevel/Platform.qml</file>
+        <file>ux/TopLevel/ProfileBar.qml</file>
+        <file>ux/TopLevel/qmldir</file>
+        <file>ux/TopLevel/SidePane.qml</file>
+        <file>ux/TopLevel/Xpane.qml</file>
+        <file>ux/Controls/Auth.qml</file>
+        <file>ux/Controls/InputType.qml</file>
+        <file>ux/Controls/MenuControl.qml</file>
+        <file>ux/thumbs/appbar.cabinet.files.variant.png</file>
+        <file>ux/thumbs/appbar.chat.png</file>
+        <file>ux/thumbs/appbar.cog.png</file>
+        <file>ux/thumbs/appbar.cogs.png</file>
+        <file>ux/thumbs/appbar.connect.png</file>
+        <file>ux/thumbs/appbar.connection.wifi.variant.png</file>
+        <file>ux/thumbs/appbar.database.png</file>
+        <file>ux/thumbs/appbar.download.png</file>
+        <file>ux/thumbs/appbar.folder.lock.png</file>
+        <file>ux/thumbs/appbar.globe.png</file>
+        <file>ux/thumbs/appbar.globe.wire.png</file>
+        <file>ux/thumbs/appbar.link.png</file>
+        <file>ux/thumbs/appbar.pages.png</file>
+        <file>ux/thumbs/appbar.progress.png</file>
+        <file>ux/thumbs/appbar.suitcase.png</file>
+        <file>ux/thumbs/toolTip.png</file>
+        <file>ux/Tools/Details.qml</file>
+        <file>ux/Tools/qmldir</file>
+        <file>ux/Tools/ScrollBar.qml</file>
+        <file>ux/Tools/Separator.qml</file>
+        <file>ux/Tools/Caption.qml</file>
     </qresource>
 </RCC>

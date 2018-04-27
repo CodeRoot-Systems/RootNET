@@ -1,5 +1,7 @@
 QT += quick
 CONFIG += c++11
+INCLUDEPATH = /usr/include/python3.6m
+LIBS += -lpython3.6m
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -13,27 +15,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += main.cpp \
-    main.cpp \
-    main.cpp \
-    main.cpp \
     venv/lib/python3.6/config-3.6m-x86_64-linux-gnu/config.c
 
 RESOURCES += qml.qrc \
 
-OTHER_FILES += \
-    bin/main.qml \
-    bin/ProfileBar.qml \
-    bin/Location.qml \
-    bin/Xpane.qml \
-    bin/Platform.qml \
-    bin/Connections.qml \
-    bin/Bar.qml \
-    bin/Control.qml \
-    bin/NotificationWindow.qml \
-    bin/.xsession/pages/Archive.qml \
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+QML_IMPORT_PATH = $$PWD/bin/Tools/ \
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
@@ -44,51 +32,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    js/ScreenFetch.js \
-    bin/Platform.qml \
-    bin/Xpane.qml \
-    bin/Location.qml \
-    bin/NotificationWindow.qml \
-    bin/Images/appbar.cabinet.files.variant.png \
-    bin/Images/appbar.chat.png \
-    bin/Images/appbar.cog.png \
-    bin/Images/appbar.cogs.png \
-    bin/Images/appbar.connect.png \
-    bin/Images/appbar.connection.wifi.variant.png \
-    bin/Images/appbar.database.png \
-    bin/Images/appbar.globe.png \
-    bin/Images/appbar.globe.wire.png \
-    bin/Images/appbar.link.png \
-    bin/Images/appbar.progress.png \
-    bin/.xsession/pages/Archive.qml \
-    bin/auth/nodeInfo.json \
-    bin/auth/Details.qmlc \
-    bin/auth/InputType.qmlc \
-    bin/auth/Separator.qmlc \
-    bin/xsession/pages/Archive.qmlc \
-    bin/xsession/Control.qmlc \
-    bin/xsession/Separator.qmlc \
-    bin/xsession/images/appbar.cabinet.files.variant.png \
-    bin/xsession/images/appbar.chat.png \
-    bin/xsession/images/appbar.cog.png \
-    bin/xsession/images/appbar.cogs.png \
-    bin/xsession/images/appbar.connect.png \
-    bin/xsession/images/appbar.connection.wifi.variant.png \
-    bin/xsession/images/appbar.database.png \
-    bin/xsession/images/appbar.globe.png \
-    bin/xsession/images/appbar.globe.wire.png \
-    bin/xsession/images/appbar.link.png \
-    bin/xsession/images/appbar.progress.png \
     bin/auth/profiler.py \
-    bin/auth/Auth.qml \
-    bin/auth/Details.qml \
-    bin/auth/InputType.qml \
-    bin/auth/Separator.qml \
     bin/xsession/pages/Archive.qml \
-    bin/xsession/Bar.qml \
-    bin/xsession/Control.qml \
-    bin/xsession/Location.qml \
-    bin/xsession/Separator.qml
 
 HEADERS += \
     venv/include/python3.6m/abstract.h \
