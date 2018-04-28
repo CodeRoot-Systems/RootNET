@@ -1,3 +1,4 @@
+Component UX.TopLevel
 ProfileBar 1.0 ProfileBar.qml
 SidePane 1.0 SidePane.qml
 Xpane 1.0 Xpane.qml
